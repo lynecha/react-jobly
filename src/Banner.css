@@ -1,0 +1,19 @@
+.bgimage {
+    width:100%;
+    height:calc(100vh - 34px);
+    background: url("https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ");
+    background-repeat: no-repeat;
+    background-position: "center center";
+    background-size:cover;
+    background-attachment: fixed;
+  }
+  .bgimage h5 {
+    color:white;
+    text-shadow:2px 2px #333;
+  }
+
+.container-fluid {
+    text-align: center;
+    font-size: 3em;
+    color: white;
+}
