@@ -1,35 +1,38 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-/** 
-*/
+/**
+ */
 function LoginForm({ login }) {
   const navigate = useNavigate();
-  let initialFormData = {username: "", password: ""};
+  let initialFormData = { username: "", password: "" };
   const [formData, setFormData] = useState(initialFormData);
-
+  const [errorMsg, setErrorMsg] = useState([]);
   /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    setFormData(fData => ({
+    setFormData((fData) => ({
       ...fData,
       [name]: value,
     }));
   }
 
   /** Call parent function and clear form. */
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    login(formData);
-    setFormData(initialFormData);
-    navigate("/")
+    try {
+      await login(formData);
+      setFormData(initialFormData);
+      navigate("/");
+    } catch (error) {
+      setErrorMsg(error);
     }
-
+  }
+  //do the same for register write the bad path
 
   function renderForm() {
-    let fullPrompt = []
-    Object.keys(initialFormData).map((field) => {
-      fullPrompt.push(
+    return Object.keys(initialFormData).map((field) => {
+      return (
         <div className="mb-3" key={field}>
           <input
             id={`login-${field}`}
@@ -41,23 +44,23 @@ function LoginForm({ login }) {
             aria-label={field}
           />
         </div>
-      )
-    })
-    return fullPrompt;
+      );
+    });
   }
-
   return (
     <div>
+      {console.log("error message = ", errorMsg)}
       <form className="loginForm" onSubmit={handleSubmit}>
-
         {renderForm()}
 
         <button className="btn-primary rig btn btn-sm loginForm-Btn">
           Login
         </button>
       </form>
+      {errorMsg.map((err) => (
+        <p>{err}</p>
+      ))}
     </div>
-
   );
 }
 

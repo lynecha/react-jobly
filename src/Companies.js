@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
 import { v4 as uuid } from "uuid";
 import Form from "./Form";
+import UserContext from "./userContext";
+import { Navigate } from "react-router-dom";
 
 /** state: an array of companies
  * calls use effect to fetch array of companies upon render
  */
 function Companies() {
+  const { currUser } = useContext(UserContext);
   const [companies, setCompanies] = useState({
     companyData: null,
     isLoading: true,
@@ -26,6 +29,9 @@ function Companies() {
 
   if (companies.isLoading) {
     return <h1>Loading...</h1>;
+  }
+  if (!currUser) {
+    return <Navigate to="/login" />;
   }
 
   function search(searchCompanies) {

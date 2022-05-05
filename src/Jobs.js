@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
 import { v4 as uuid } from "uuid";
 import Form from "./Form";
+import UserContext from "./userContext";
+import { Navigate } from "react-router-dom";
 
 /** state: an array of job objects
  *  fetches jobs from the api upon render
  */
 function Jobs() {
+  const { currUser } = useContext(UserContext);
   const [jobs, setJobs] = useState({
     jobData: null,
     isLoading: true,
@@ -28,6 +31,9 @@ function Jobs() {
 
   if (jobs.isLoading) {
     return <h1>Loading...</h1>;
+  }
+  if (!currUser) {
+    return <Navigate to="/login" />;
   }
 
   function search(searchJobs) {
