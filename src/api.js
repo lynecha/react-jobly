@@ -11,13 +11,14 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
  */
 
 class JoblyApi {
+  static token = null;
   // Remember, the backend needs to be authorized with a token
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
-  static token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  
+    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+    // "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+    // "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -56,7 +57,24 @@ class JoblyApi {
     return res.jobs;
   }
 
-  // obviously, you'll add a lot here ...
+  static async register(formData) {
+    let res = await this.request("auth/register", formData,"post");
+    console.log("what is res", res)
+    return res.token;
+  }
+
+  static async getCurrUser(username) {
+    console.log("am i here")
+    let res = await this.request(`users/${username}`);
+    console.log("what is getbyusername res", res)
+    return res;
+  }
+
+  static async login(username) {
+    let res = await this.request("auth/token", username,"post");
+    return res.token;
+  }
+
 }
 
 export default JoblyApi;
