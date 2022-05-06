@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./RegisterForm.css";
 
 /**
  */
@@ -36,10 +37,9 @@ function RegisterForm({ register }) {
   }
 
   function renderForm() {
-    let fullPrompt = [];
-    Object.keys(initialFormData).map((field) => {
-      fullPrompt.push(
-        <div className="mb-3" key={field}>
+    return Object.keys(initialFormData).map((field) => {
+      return (
+        <div className="mb-3 card-body" key={field}>
           <input
             id={`Register-${field}`}
             name={field}
@@ -52,15 +52,15 @@ function RegisterForm({ register }) {
         </div>
       );
     });
-    return fullPrompt;
   }
 
   return (
-    <div>
-      <form className="RegisterForm" onSubmit={handleSubmit}>
+    <div className="registerContainer">
+      <h2>Sign Up</h2>
+      <form className="RegisterForm card align-self-center" onSubmit={handleSubmit}>
         {renderForm()}
 
-        <button className="btn-primary rig btn btn-sm registerForm-Btn">
+        <button className="btn-primary rig btn btn-lrg registerForm-Btn">
           Signup
         </button>
       </form>

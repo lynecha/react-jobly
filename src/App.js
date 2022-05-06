@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar";
 import Routelist from "./Routelist";
 import "./App.css";
@@ -29,23 +29,26 @@ function App() {
   );
   //handle the loading logic
 
+  //calls api to register user to backend
   async function register(formData) {
     const resp = await JoblyApi.register(formData);
     setToken(resp);
   }
 
+  //calls api to login user to backend
   async function login(formData) {
     const resp = await JoblyApi.login(formData);
     setToken(resp);
   }
 
+  //calls api to update user to backend
   async function updateUser(formData, username) {
     const resp = await JoblyApi.updateUser(formData, username);
     setcurrUser(resp);
   }
 
+  //calls api to get current user from token from backend
   async function getCurrUserFromToken(token) {
-    //do it in effect
     let user = jwt_decode(token);
     JoblyApi.token = token;
     console.log(user);
@@ -55,9 +58,10 @@ function App() {
 
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="spinner-border" style={{width:"3em", height: "3em"}}></div>;
   }
 
+  //logs out user
   function logOutUser() {
     setToken(null);
     setcurrUser(null);
@@ -68,7 +72,7 @@ function App() {
       <UserContext.Provider value={{ currUser }}>
         <BrowserRouter>
           <NavBar logOutUser={logOutUser} />
-          <div className="container">
+          <div>
             <Routelist
               login={login}
               register={register}

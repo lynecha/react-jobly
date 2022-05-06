@@ -6,11 +6,13 @@ import React from "react";
  */
 function CompanyCard({ company }) {
   return (
-    <div>
+    <div className="card" style={{width: "80em", height: "10em"}}>
       <Link to={`/companies/${company.handle}`}>
         <h1>{company.handle}</h1>
-        <p>{company.description}</p>
-        <img src={company.logoUrl} alt="Company Logo goes Here" />
+        <div className="card-body">
+          <p>{company.description}</p>
+          <img src={company.logoUrl} alt="Company Logo goes Here" />
+        </div>
       </Link>
     </div>
   );

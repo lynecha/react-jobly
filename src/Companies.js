@@ -28,7 +28,7 @@ function Companies() {
   }, [searchQuery]);
 
   if (companies.isLoading) {
-    return <h1>Loading...</h1>;
+    return <div className="spinner-border" style={{width:"3em", height: "3em"}}></div>;
   }
 
   function search(searchCompanies) {

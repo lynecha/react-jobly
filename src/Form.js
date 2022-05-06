@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
 
-// const initialFormData = { search: "" };
 
+/** prop: search function
+ *  state: form data
+ */
 function Form({ search }) {
   //dont call it form // searchForm
   const [formData, setFormData] = useState("");
@@ -30,7 +31,7 @@ function Form({ search }) {
           aria-label="Title"
         />
         <button className="btn-primary rig btn btn-sm searchForm-searchBtn">
-          Generate!
+          Search
         </button>
       </form>
     </div>

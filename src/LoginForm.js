@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./LoginForm.css";
 
-/**
+/** Prop: login function
+ *  State: form data, and error messages
+ *  Render Login form
  */
 function LoginForm({ login }) {
   const navigate = useNavigate();
@@ -33,7 +36,7 @@ function LoginForm({ login }) {
   function renderForm() {
     return Object.keys(initialFormData).map((field) => {
       return (
-        <div className="mb-3" key={field}>
+        <div className="mb-3 card-body" key={field}>
           <input
             id={`login-${field}`}
             name={field}
@@ -48,13 +51,14 @@ function LoginForm({ login }) {
     });
   }
   return (
-    <div>
-      {console.log("error message = ", errorMsg)}
-      <form className="loginForm" onSubmit={handleSubmit}>
+    <div className="loginContainer">
+      <h2>Login</h2>
+      <form className="loginForm card align-self-center" onSubmit={handleSubmit}>
+        
         {renderForm()}
 
-        <button className="btn-primary rig btn btn-sm loginForm-Btn">
-          Login
+        <button className="btn-primary rig btn btn-lrg loginForm-Btn">
+          Log in
         </button>
       </form>
       {errorMsg.map((err) => (

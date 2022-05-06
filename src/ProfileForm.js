@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "./userContext";
-import { Navigate } from "react-router-dom";
 
 /**
+ *  Prop: updateUser function
+ *  State: form data, and error messages
+ *  Render profile form
  */
 function ProfileForm({ updateUser }) {
   const { currUser } = useContext(UserContext);
-  console.log("what is curruser",currUser)
+  console.log("what is curruser", currUser)
   const [errorMsg, setErrorMsg] = useState([]);
   const initialFormData = {
     userData: {
@@ -18,23 +20,6 @@ function ProfileForm({ updateUser }) {
     isUpdated: false
   };
   const [formData, setFormData] = useState(initialFormData);
-  const [isLoading, setIsLoading] = useState(true);
-  
-  // useEffect(() => {
-  //   function getUser() {
-  //     if (currUser) {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  //   getUser();
-  // }, [])
-
-  // if (isLoading) {
-  //   return <h1>Loading...</h1>;
-  // }
-  // if (!currUser) {
-  //   return <Navigate to="/login" />;
-  // }
 
   /** Update form input. */
   //ASK FOR A CLEANER WAY
@@ -43,7 +28,6 @@ function ProfileForm({ updateUser }) {
     setFormData((fData) => ({
       userData: { ...fData.userData, [name]: value },
       isUpdated: false,
-      //   fData[userData[name]] : value,
     }));
   }
 
@@ -58,7 +42,7 @@ function ProfileForm({ updateUser }) {
       setFormData((fData) => ({
         userData: { ...fData.userData },
         isUpdated: true,
-        //   fData[userData[name]] : value,
+
       }));
     } catch (error) {
       setErrorMsg(error);
@@ -67,9 +51,8 @@ function ProfileForm({ updateUser }) {
 
   //separate file
   function renderForm() {
-    let fullPrompt = [];
-    Object.keys(initialFormData.userData).map((field) => {
-      fullPrompt.push(
+    return Object.keys(initialFormData.userData).map((field) => {
+      return (
         <div className="mb-3" key={field}>
           <input
             disabled={field === "username"}
@@ -84,7 +67,6 @@ function ProfileForm({ updateUser }) {
         </div>
       );
     });
-    return fullPrompt;
   }
 
   return (
