@@ -30,9 +30,6 @@ function Companies() {
   if (companies.isLoading) {
     return <h1>Loading...</h1>;
   }
-  if (!currUser) {
-    return <Navigate to="/login" />;
-  }
 
   function search(searchCompanies) {
     setSearchQuery(searchCompanies);

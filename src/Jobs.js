@@ -32,9 +32,6 @@ function Jobs() {
   if (jobs.isLoading) {
     return <h1>Loading...</h1>;
   }
-  if (!currUser) {
-    return <Navigate to="/login" />;
-  }
 
   function search(searchJobs) {
     setSearchQuery(searchJobs);

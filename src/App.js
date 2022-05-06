@@ -21,9 +21,9 @@ function App() {
         } else {
           localStorage.removeItem("token");
         }
+        setIsLoading(false);
       }
       addToLocal();
-      setIsLoading(false);
     },
     [token]
   );
@@ -52,6 +52,7 @@ function App() {
     const currUser = await JoblyApi.getCurrUser(user.username);
     return currUser;
   }
+
 
   if (isLoading) {
     return <div>Loading...</div>;

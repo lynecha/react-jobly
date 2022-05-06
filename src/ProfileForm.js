@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "./userContext";
+import { Navigate } from "react-router-dom";
 
 /**
  */
 function ProfileForm({ updateUser }) {
   const { currUser } = useContext(UserContext);
+  console.log("what is curruser",currUser)
   const [errorMsg, setErrorMsg] = useState([]);
   const initialFormData = {
     userData: {
@@ -13,9 +15,26 @@ function ProfileForm({ updateUser }) {
       lastName: currUser.user.lastName,
       email: currUser.user.email,
     },
-    isUpdated: false,
+    isUpdated: false
   };
   const [formData, setFormData] = useState(initialFormData);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // useEffect(() => {
+  //   function getUser() {
+  //     if (currUser) {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   getUser();
+  // }, [])
+
+  // if (isLoading) {
+  //   return <h1>Loading...</h1>;
+  // }
+  // if (!currUser) {
+  //   return <Navigate to="/login" />;
+  // }
 
   /** Update form input. */
   //ASK FOR A CLEANER WAY
