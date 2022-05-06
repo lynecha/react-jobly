@@ -64,7 +64,7 @@ class JoblyApi {
 
   static async getCurrUser(username) {
     let res = await this.request(`users/${username}`);
-    return res;
+    return res.user;
   }
 
   static async login(username) {
@@ -74,6 +74,12 @@ class JoblyApi {
 
   static async updateUser(formData, username) {
     let res = await this.request(`users/${username}`, formData, "patch");
+    return res;
+  }
+
+  //Returns {"applied": jobId}
+  static async applyToJob(username,jobId) {
+    let res = await this.request(`users/${username}/jobs/${jobId}`,{}, "post");
     return res;
   }
 }

@@ -12,10 +12,10 @@ function ProfileForm({ updateUser }) {
   const [errorMsg, setErrorMsg] = useState([]);
   const initialFormData = {
     userData: {
-      username: currUser.user.username,
-      firstName: currUser.user.firstName,
-      lastName: currUser.user.lastName,
-      email: currUser.user.email,
+      username: currUser.username,
+      firstName: currUser.firstName,
+      lastName: currUser.lastName,
+      email: currUser.email,
     },
     isUpdated: false
   };
@@ -38,7 +38,7 @@ function ProfileForm({ updateUser }) {
     delete userData.username;
 
     try {
-      await updateUser(userData, currUser.user.username);
+      await updateUser(userData, currUser.username);
       setFormData((fData) => ({
         userData: { ...fData.userData },
         isUpdated: true,

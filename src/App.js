@@ -17,6 +17,7 @@ function App() {
         if (token) {
           localStorage.setItem("token", token);
           let user = await getCurrUserFromToken(token);
+          console.log("curr usser state:", user)
           setcurrUser(user);
         } else {
           localStorage.removeItem("token");
@@ -51,14 +52,37 @@ function App() {
   async function getCurrUserFromToken(token) {
     let user = jwt_decode(token);
     JoblyApi.token = token;
-    console.log(user);
+    console.log("user",user);
     const currUser = await JoblyApi.getCurrUser(user.username);
+    if (!currUser.applications) {
+      currUser.applications = [];
+    }
     return currUser;
   }
 
+  async function applyJobs(jobId) {
+    const resp = await JoblyApi.applyToJob(currUser.username, jobId);
+    //currUser = {user:{firstname, applications:[]}}
+    setcurrUser(user => ({
+        ...user,
+        applications: [...user.applications, Number(jobId)]
+    }))
+    console.log("type of ", currUser.applications)
+    // return resp;
+  }
+
+  function hasAppliedtoJob(jobId) {
+    if (currUser.applications.includes(jobId)) {
+      return true;
+    }
+    return false;
+  }
+
+
+
 
   if (isLoading) {
-    return <div className="spinner-border" style={{width:"3em", height: "3em"}}></div>;
+    return <div className="spinner-border" style={{ width: "3em", height: "3em" }}></div>;
   }
 
   //logs out user
@@ -69,11 +93,12 @@ function App() {
 
   return (
     <div>
-      <UserContext.Provider value={{ currUser }}>
+      <UserContext.Provider value={{ currUser, hasAppliedtoJob }}>
         <BrowserRouter>
           <NavBar logOutUser={logOutUser} />
           <div>
             <Routelist
+              applyJobs={applyJobs}
               login={login}
               register={register}
               updateUser={updateUser}

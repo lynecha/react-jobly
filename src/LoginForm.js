@@ -40,6 +40,7 @@ function LoginForm({ login }) {
           <input
             id={`login-${field}`}
             name={field}
+            type={field==="password" ? "password" : "text"}
             className="form-control"
             placeholder={field}
             onChange={handleChange}

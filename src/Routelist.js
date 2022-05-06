@@ -9,7 +9,7 @@ import ProfileForm from "./ProfileForm";
 import UserContext from "./userContext";
 import { useContext } from "react";
 
-function RouteList({ login, register, updateUser }) {
+function RouteList({ login, register, updateUser, applyJobs }) {
   const { currUser } = useContext(UserContext);
 
   if (currUser) {
@@ -20,7 +20,7 @@ function RouteList({ login, register, updateUser }) {
 
           <Route path="/companies" element={<Companies />} />
 
-          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs" element={<Jobs applyJobs={applyJobs} />} />
 
           <Route path="/companies/:handle" element={<CompanyDetails />} />
 

@@ -31,7 +31,7 @@ function NavBar({ logOutUser }) {
           <NavLink to="/companies">Companies</NavLink>
           <NavLink to="/jobs">Jobs</NavLink>
           <NavLink to="/profile">Profile</NavLink>
-          <NavLink to="/" onClick={logOutUser}> Log Out {currUser.user.username}</NavLink>
+          <NavLink to="/" onClick={logOutUser}> Log Out {currUser.username}</NavLink>
         </div>
 
 

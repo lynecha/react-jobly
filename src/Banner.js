@@ -14,7 +14,7 @@ function Banner() {
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h2>Jobly</h2>
             {currUser ? (
-              <p>Welcome Back {currUser.user.username} </p>
+              <p>Welcome Back {currUser.username} </p>
             ) : (
               <div>
                 <h5>All the jobs in one, convenient place. </h5>

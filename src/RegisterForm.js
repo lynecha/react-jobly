@@ -43,6 +43,7 @@ function RegisterForm({ register }) {
           <input
             id={`Register-${field}`}
             name={field}
+            type={field==="password" ? "password" : "text"}
             className="form-control"
             placeholder={field}
             onChange={handleChange}
