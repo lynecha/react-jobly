@@ -1,18 +1,18 @@
 # react-jobly
-React frontend and Node.js/Express/Postgres backend app for posting, viewing, and applying to job applications.
+A single page React frontend and a RESTful API backend with full CRUD capabilities to allow users to perform CRUD operations on the users, jobs, and companies routes depending on authorization level and respond back with JSON. Built using Node.js/Express/Postgres.
 
 ### Learnings
 * Authentication and authorization through JWTs
 * Recovering login status through data hydration
 * Protect against SQL injection attacks by parameterizing database queries
 
-_The backend code in this repository was provided by [Rithm School](https://www.rithmschool.com/). We built the backend as a separate exercise (code can be found [here](https://github.com/andrewsli/express-jobly)). Pair programmed with [Andrew Kim](https://github.com/ghjkm319)_
+_The backend code in this repository was provided by [Rithm School](https://www.rithmschool.com/). We built the backend as a separate exercise (code can be found [here](https://github.com/lynecha/express-jobly)). Pair programmed with [Andrew Kim](https://github.com/ghjkm319)_
 
 ## Getting Started
 
 1. Clone this repo 
 ```
-git clone https://github.com/andrewsli/react-jobly.git
+git clone https://github.com/lynecha/react-jobly.git
 ```
 2. cd into the "backend" directory, install required packages, create and seed database, and start the server. (Make sure that you have postgreSQL installed)
 ```
@@ -33,18 +33,6 @@ npm start
 
 This will run your app on http://localhost:3000 
 
-<!-- 
-## Running Tests (once we write/fix them)
-
-```
-createdb jobly-test
-cd backend
-jest
-
-cd frontend
-npm test
-```
--->
 
 ## App Information
 
