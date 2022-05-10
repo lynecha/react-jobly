@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# react-jobly
+React frontend and Node.js/Express/Postgres backend app for posting, viewing, and applying to job applications.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Learnings
+* Authentication and authorization through JWTs
+* Recovering login status through data hydration
+* Protect against SQL injection attacks by parameterizing database queries
 
-## Available Scripts
+_The backend code in this repository was provided by [Rithm School](https://www.rithmschool.com/). We built the backend as a separate exercise (code can be found [here](https://github.com/andrewsli/express-jobly)). Pair programmed with [Andrew Kim](https://github.com/ghjkm319)_
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+1. Clone this repo 
+```
+git clone https://github.com/andrewsli/react-jobly.git
+```
+2. cd into the "backend" directory, install required packages, create and seed database, and start the server. (Make sure that you have postgreSQL installed)
+```
+cd backend
+npm install
+createdb jobly
+psql jobly < data.sql
+nodemon server.js 
+```
+This will start the server on port 3001
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. cd into the "frontend" directory, install required packages, then start the app
+```
+cd frontend
+npm install
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This will run your app on http://localhost:3000 
 
-### `npm test`
+<!-- 
+## Running Tests (once we write/fix them)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+createdb jobly-test
+cd backend
+jest
 
-### `npm run build`
+cd frontend
+npm test
+```
+-->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## App Information
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Routes
+|Path | Component |
+| :--- | :--- |
+| / | Home  |
+| /register  | Login  |
+| /login  | Login  |
+| /companies  | Companies  |
+| /companies/:handle  | Company  |
+| /jobs  | Jobs |
+| /profile | Profile  |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Component Architecture
+```
+App
+├── Navigation
+└─┬ Routes
+  ├─┬ Companies
+  │ ├── CompanyCard
+  │ └── Search
+  ├─┬ Company
+  │ └── JobCard
+  ├── Home
+  ├─┬ Jobs
+  │ │ └── JobCard
+  │ └── Search
+  ├─┬ Login
+  │ └── Alert
+  ├── PrivateRoute
+  └─┬ Profile
+    └── Alert
+```
