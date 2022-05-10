@@ -50,8 +50,7 @@ This will run your app on http://localhost:3000
 
 ### Component Architecture
 ```
-![Alt](https://github.com/lynecha/react-jobly/blob/56bee4327a6daf85ec3fae4368d4e8782114a452/Jobly%20Component%20Tree.drawio.png)
-
+![My Diagram](/Jobly-Component-Tree.drawio.png)
 App
 ├── Navigation
 └─┬ Routes
