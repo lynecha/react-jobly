@@ -50,7 +50,7 @@ This will run your app on http://localhost:3000
 
 ### Component Architecture
 ```
-
+![Alt](Jobly Component Tree.drawio.png)
 
 App
 ├── Navigation
