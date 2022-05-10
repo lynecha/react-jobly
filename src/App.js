@@ -52,7 +52,6 @@ function App() {
   async function getCurrUserFromToken(token) {
     let user = jwt_decode(token);
     JoblyApi.token = token;
-    console.log("user",user);
     const currUser = await JoblyApi.getCurrUser(user.username);
     if (!currUser.applications) {
       currUser.applications = [];
