@@ -6,7 +6,7 @@ A single page React frontend and a RESTful API backend with full CRUD capabiliti
 * Recovering login status through data hydration
 * Protect against SQL injection attacks by parameterizing database queries
 
-_The backend code in this repository was provided by [Rithm School](https://www.rithmschool.com/). We built the backend as a separate exercise (code can be found [here](https://github.com/lynecha/express-jobly)). Pair programmed with [Andrew Kim](https://github.com/ghjkm319)_
+_The backend code in this repository was provided by [Rithm School](https://www.rithmschool.com/). We built the backend as a separate exercise (code can be found [here](https://github.com/lynecha/express-jobly)). Pair programmed with [Andrew Choi](https://github.com/ghjkm319)_
 
 ## Getting Started
 
