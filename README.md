@@ -34,21 +34,6 @@ npm start
 This will run your app on http://localhost:3000 
 
 
-## App Information
 
-### Routes
-|Path | Component |
-| :--- | :--- |
-| / | Home  |
-| /register  | Login  |
-| /login  | Login  |
-| /dashboard  | Dashboard  |
-| /profile | Profile  |
-```
-
-
-### Functionality Overview
-The current user is shown other users that are near their location.
-![image](https://user-images.githubusercontent.com/31969608/171570310-be9a4a6f-b29f-45a3-a1ed-abc200f24df0.png)
 
 
