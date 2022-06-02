@@ -33,7 +33,16 @@ npm start
 
 This will run your app on http://localhost:3000 
 
-
+### Routes
+|Path | Component |
+| :--- | :--- |
+| / | Home  |
+| /register  | Signup  |
+| /signup  | Signup  |
+| /companies  | Companies  |
+| /companies/:handle  | Company  |
+| /jobs  | Jobs |
+| /profile | Profile  |
 
 
 
