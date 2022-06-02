@@ -10,7 +10,7 @@ _The backend code in this repository was provided by [Rithm School](https://www.
 
 ## Getting Started
 
-1. Clone this repo 
+1. Clone this repo and the backend repo
 ```
 git clone https://github.com/lynecha/react-jobly.git
 ```
@@ -42,30 +42,13 @@ This will run your app on http://localhost:3000
 | / | Home  |
 | /register  | Login  |
 | /login  | Login  |
-| /companies  | Companies  |
-| /companies/:handle  | Company  |
-| /jobs  | Jobs |
+| /dashboard  | Dashboard  |
 | /profile | Profile  |
+```
 
 
-### Component Architecture
-```
-![My Diagram](/Jobly-Component-Tree.drawio.png)
-App
-├── Navigation
-└─┬ Routes
-  ├─┬ Companies
-  │ ├── CompanyCard
-  │ └── Search
-  ├─┬ Company
-  │ └── JobCard
-  ├── Home
-  ├─┬ Jobs
-  │ │ └── JobCard
-  │ └── Search
-  ├─┬ Login
-  │ └── Alert
-  ├── PrivateRoute
-  └─┬ Profile
-    └── Alert
-```
+### Functionality Overview
+The current user is shown other users that are near their location.
+![image](https://user-images.githubusercontent.com/31969608/171569792-c24dbb6d-e439-4542-9141-5269d3b21d58.png)
+
+
