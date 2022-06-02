@@ -49,6 +49,6 @@ This will run your app on http://localhost:3000
 
 ### Functionality Overview
 The current user is shown other users that are near their location.
-![image](https://user-images.githubusercontent.com/31969608/171569792-c24dbb6d-e439-4542-9141-5269d3b21d58.png)
+![image](https://user-images.githubusercontent.com/31969608/171570310-be9a4a6f-b29f-45a3-a1ed-abc200f24df0.png)
 
 
